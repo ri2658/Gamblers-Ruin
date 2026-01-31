@@ -20,11 +20,11 @@ Now let $E_{i}$ be the event that you win with $i$ coins. Our boundary condition
 
 $$
 \begin{aligned}
-P(E_{i}) = P(E_{i} | \text{win})P(\text{win}) + P(E_{i} | \text{lose})P(\text{lose}) <br>
-P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q <br>
-(p+q)P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q <br>
-q(P(E_{i})-P(E_{i-1})) = p(P(E_{i+1})-P(E_{i})) <br>
-P(E_{i+1})-P(E_{i}) = \frac{q}{p}(P(E_{i})-P(E_{i-1})) <br>
+P(E_{i}) = P(E_{i} | \text{win})P(\text{win}) + P(E_{i} | \text{lose})P(\text{lose}) \\
+P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q \\
+(p+q)P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q \\
+q(P(E_{i})-P(E_{i-1})) = p(P(E_{i+1})-P(E_{i})) \\
+P(E_{i+1})-P(E_{i}) = \frac{q}{p}(P(E_{i})-P(E_{i-1})) \\
 \end{aligned}
 $$
 
