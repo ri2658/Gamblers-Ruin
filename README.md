@@ -32,13 +32,13 @@ Now recognize that this is a recursive relation. To isolate $P(E_{i})$, one shou
 
 $$
 \begin{aligned}
-i = 1 \quad & P(E_{2}) - P(E_{1}) &= \frac{q}{p}\big(P(E_{1}) - P(E_{0})\big) \\
-i = 2 \quad & P(E_{3}) - P(E_{2}) &= \frac{q}{p}\big(P(E_{2}) - P(E_{1})\big)
+i = 1 \quad & P(E_{2}) - P(E_{1}) = \frac{q}{p}\big(P(E_{1}) - P(E_{0})\big) \\
+i = 2 \quad & P(E_{3}) - P(E_{2}) = \frac{q}{p}\big(P(E_{2}) - P(E_{1})\big)
                                    = \left(\frac{q}{p}\right)^2 \big(P(E_{1}) - P(E_{0})\big) \\
-i = 3 \quad & P(E_{4}) - P(E_{3}) &= \frac{q}{p}\big(P(E_{3}) - P(E_{2})\big)
+i = 3 \quad & P(E_{4}) - P(E_{3}) = \frac{q}{p}\big(P(E_{3}) - P(E_{2})\big)
                                    = \left(\frac{q}{p}\right)^3 \big(P(E_{1}) - P(E_{0})\big) \\
 & \vdots \\
-i = N-1 \quad & P(E_{N}) - P(E_{N-1}) &= \frac{q}{p}\big(P(E_{N-1}) - P(E_{N-2})\big)
+i = N-1 \quad & P(E_{N}) - P(E_{N-1}) = \frac{q}{p}\big(P(E_{N-1}) - P(E_{N-2})\big)
                                        = \left(\frac{q}{p}\right)^{N-1} \big(P(E_{1}) - P(E_{0})\big)
 \end{aligned}
 $$
