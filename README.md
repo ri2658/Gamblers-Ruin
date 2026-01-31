@@ -1,1 +1,67 @@
-A theoretical walkthrough and Python simulation demonstration of the classic Gambler's Ruin Scenario.
+# Gambler's Ruin in Python
+
+The classic Gambler's Ruin problem; it goes like this.
+
+Imagine a gambler playing a simple coin-flip game against a casino.
+
+Rules of the Game
+
+- The gambler starts with $i$ coins.
+- The casino effectively holds the rest, so there are $N$ total coins in the system.
+
+Each round:
+
+- With probability $p$, the gambler wins and gains 1 coin
+- With probability $1−p$, the gambler loses and gives up 1 coin
+
+# Theoretical Probability
+
+Now let $E_{i}$ be the event that you win with $i$ coins. Our boundary conditions natural arise where $P(E_{0})$ (i.e., you lose if you have 0 coins left as per the rules), and $P(E_{N})$ (i.e., you win if you have $N$, or in other words, all the coins). Then,
+
+$$
+P(E_{i}) = P(E_{i} | \text{win})P(\text{win}) + P(E_{i} | \text{lose})P(\text{lose}) \\
+P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q \\
+(p+q)P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q \\
+q(P(E_{i})-P(E_{i-1})) = p(P(E_{i+1})-P(E_{i})) \\
+P(E_{i+1})-P(E_{i}) = \frac{q}{p}(P(E_{i})-P(E_{i-1})) \\
+$$
+
+Now recognize that this is a recursive relation. To isolate $P(E_{i})$, one should sum up the terms from $i=0$ to $i=N$.
+
+$$
+i=1, P(E_{2})-P(E_{1}) = \frac{q}{p}(P(E_{1})-P(E_{0})) \\
+i=2, P(E_{3})-P(E_{2}) = \frac{q}{p}(P(E_{2})-P(E_{1})) = (\frac{q}{p})^2(P(E_{1})-P(E_{0})) \\
+i=3, P(E_{4})-P(E_{3}) = \frac{q}{p}(P(E_{3})-P(E_{2})) = (\frac{q}{p})^3(P(E_{1})-P(E_{0})) \\ 
+...\\ 
+i=N-1, P(E_{N})-P(E_{N-1}) = \frac{q}{p}(P(E_{N-1})-P(E_{N-2})) = (\frac{q}{p})^{N-1}(P(E_{1})-P(E_{0})) \\
+$$
+
+Notice the cancellations on the left-hand side when summed. Note that we invoke the initial condition $P(E_{0})=0$ here.
+
+$$
+P(E_{N})-P(E_{1})=(P(E_{1})-0)(\frac{q}{p} + (\frac{q}{p})^2 + (\frac{q}{p})^3 + ... + (\frac{q}{p})^{N-1})\\
+P(E_{N})=P(E_{1})(1+(\frac{q}{p})^1 + (\frac{q}{p})^2 + (\frac{q}{p})^3 + ... + (\frac{q}{p})^{N-1})\\
+$$
+
+Notice the right hand side, which is a geometric series with common ratio $\frac{q}{p}$.Recall the formula for the sum of a geometric series, which is $S_{n} = \frac{a_0(1-r^N)}{1-r}$ where $r$ is the common ratio.
+
+$$
+P(E_{N})=P(E_{1})(\frac{(1-(q/p)^N)}{1-q/p})\
+$$
+
+Now, invoke the intial condition $P(E_{N})=1$.
+
+$$
+P(E_{1})=\frac{(1-q/p)}{1-(q/p)^N}\\
+$$
+
+Finally, consider a sum to a specific index $i$.
+
+$$
+P(E_{i})=P(E_{1})(1+(\frac{q}{p})^1 + (\frac{q}{p})^2 + (\frac{q}{p})^3 + ... + (\frac{q}{p})^{i-1})\\
+P(E_{i})=P(E_{1})(\frac{(1-(q/p)^i)}{1-q/p}) \\
+P(E_{i})=\frac{(1-q/p)}{1-(q/p)^N}(\frac{(1-(q/p)^i)}{1-q/p}) \\
+P(E_{i})=\frac{1-(q/p)^i}{1-(q/p)^N} \\
+$$
+
+Now that we've obtained a formula, we can verify that this is true with a simulation in Python!
