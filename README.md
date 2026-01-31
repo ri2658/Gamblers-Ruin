@@ -19,11 +19,13 @@ Each round:
 Now let $E_{i}$ be the event that you win with $i$ coins. Our boundary conditions natural arise where $P(E_{0})$ (i.e., you lose if you have 0 coins left as per the rules), and $P(E_{N})$ (i.e., you win if you have $N$, or in other words, all the coins). Then,
 
 $$
+\begin{aligned}
 P(E_{i}) = P(E_{i} | \text{win})P(\text{win}) + P(E_{i} | \text{lose})P(\text{lose}) <br>
 P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q <br>
 (p+q)P(E_{i}) = P(E_{i+1})p + P(E_{i-1})q <br>
 q(P(E_{i})-P(E_{i-1})) = p(P(E_{i+1})-P(E_{i})) <br>
 P(E_{i+1})-P(E_{i}) = \frac{q}{p}(P(E_{i})-P(E_{i-1})) <br>
+\end{aligned}
 $$
 
 Now recognize that this is a recursive relation. To isolate $P(E_{i})$, one should sum up the terms from $i=0$ to $i=N$.
