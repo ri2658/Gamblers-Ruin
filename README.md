@@ -54,7 +54,7 @@ Notice the right hand side, which is a geometric series with common ratio $\frac
 $$
 \begin{aligned}
 P(E_{N})=P(E_{1})(\frac{(1-(q/p)^N)}{1-q/p}) \\
-\end(aligned)
+\end{aligned}
 $$
 
 Now, invoke the intial condition $P(E_{N})=1$.
